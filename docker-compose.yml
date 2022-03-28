@@ -20,7 +20,7 @@ services:
       TZ: "Asia/Jakarta"
       MYSQL_ROOT_PASSWORD: "root"
       # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'root'
+      MYSQL_USER: 'root_user'
       # You can use whatever password you like
       MYSQL_PASSWORD: 'root'
     ports:
