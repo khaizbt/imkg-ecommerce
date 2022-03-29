@@ -17,7 +17,7 @@ func main() {
 	router.Use(middleware.SecureMiddleware())
 	route.RouteUser(router, userService)
 	route.ProductRoute(router, userService)
-
+	route.TransactionRoute(router, userService)
 	_ = router.Run(":8000")
 
 }
