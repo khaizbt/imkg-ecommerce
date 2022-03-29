@@ -6,36 +6,13 @@ import (
 )
 
 type UserRepository interface {
-	//ListUser() ([]model.User, error)
 	FindByEmail(email string) (model.User, error)
 	FindById(userId int) (model.User, error)
-}
+	UserFeature(feature model.UserTypeFeature) (model.UserTypeFeature, error)
 
-//func (r *repository) ListUser() ([]model.User, error) {
-//	results := []model.User{}
-//
-//	users, err := r.db.Query("select * from users")
-//
-//	if err != nil {
-//		return results, err
-//	}
-//
-//	defer users.Close()
-//
-//	for users.Next() {
-//		var each model.User
-//
-//		err = users.Scan(&each.ID, &each.Name, &each.Email, each.Phone)
-//
-//		if err != nil {
-//			return results, err
-//		}
-//
-//		results = append(results, each)
-//	}
-//
-//	return results, nil
-//}
+	GetBrandIdByName(name string) (model.ProductBrand, error)
+	GetCategoryIdByName(name string) (model.ProductCategory, error)
+}
 
 func (r *repository) FindByEmail(email string) (model.User, error) {
 	var user model.User
@@ -59,4 +36,14 @@ func (r *repository) FindById(userId int) (model.User, error) {
 	}
 
 	return user, nil
+}
+
+func (r *repository) UserFeature(feature model.UserTypeFeature) (model.UserTypeFeature, error) {
+	err := r.db.Where("id_user_type = ?", feature.IDUserType).Where("id_feature = ?", feature.IDFeature).Find(&feature).Error
+
+	if err != nil {
+		return feature, err
+	}
+
+	return feature, nil
 }
