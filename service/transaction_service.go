@@ -124,3 +124,5 @@ func (s *transactionService) DeleteCart(input entity.CartInput) error {
 }
 
 //TODO jika add Cart dan ada data Product IDnya maka update qty jika tidak ada maka create baru
+
+//TODO jika Checkout maka mapping data id cart yang di checkout lalu delete 1-1
