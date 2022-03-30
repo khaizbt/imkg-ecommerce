@@ -3,12 +3,13 @@ package service
 import (
 	"context"
 	"fmt"
+	"log"
+	"time"
+
 	"github.com/gosimple/slug"
 	"github.com/khaizbt/imkg-ecommerce/entity"
 	"github.com/khaizbt/imkg-ecommerce/model"
 	"github.com/khaizbt/imkg-ecommerce/repository"
-	"log"
-	"time"
 )
 
 type (
@@ -21,6 +22,7 @@ type (
 		InsertProduct(input entity.ProductInput) error
 		GetProduct(inputSearchProduct entity.SearchInput) ([]model.Product, error)
 		UpdateProduct(productId string, input entity.ProductInput) error
+		DeleteProduct(input entity.ProductInput) error
 	}
 )
 
@@ -33,6 +35,7 @@ func (s *productService) InsertProduct(input entity.ProductInput) error {
 		Title:       input.Title,
 		Description: input.Description,
 		SKU:         input.SKU,
+		Stock:       input.Stock,
 		Price:       input.Price,
 		CategoryId:  input.CategoryID,
 		InStock:     input.InStock,
@@ -104,6 +107,16 @@ func (s *productService) UpdateProduct(productId string, input entity.ProductInp
 
 	if err != nil {
 		log.Printf(err.Error())
+		return err
+	}
+
+	return nil
+}
+
+func (s *productService) DeleteProduct(input entity.ProductInput) error {
+	err := s.product_service.DeleteProduct(input.ID)
+
+	if err != nil {
 		return err
 	}
 

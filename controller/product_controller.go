@@ -2,13 +2,14 @@ package controller
 
 import (
 	"fmt"
+	"net/http"
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/khaizbt/imkg-ecommerce/entity"
 	"github.com/khaizbt/imkg-ecommerce/helper"
 	"github.com/khaizbt/imkg-ecommerce/model"
 	"github.com/khaizbt/imkg-ecommerce/service"
-	"net/http"
-	"strconv"
 )
 
 type productController struct {
@@ -89,11 +90,33 @@ func (h *productController) UpdateProduct(c *gin.Context) {
 	err = h.product_service.UpdateProduct(strconv.Itoa(inputID.ID), input)
 
 	if err != nil {
-		responseError := helper.APIResponse("Create Product Failed #CTM61", http.StatusBadRequest, "fail", nil)
+		responseError := helper.APIResponse("Update Product Failed #CTM61", http.StatusBadRequest, "fail", nil)
 		c.JSON(http.StatusBadRequest, responseError)
 		return
 	}
 
-	response := helper.APIResponse("Product has been created", http.StatusOK, "success", true)
+	response := helper.APIResponse("Product has been updated", http.StatusOK, "success", true)
+	c.JSON(http.StatusOK, response)
+}
+
+func (h *productController) DeleteProduct(c *gin.Context) {
+	var input entity.ProductInput
+	err := c.ShouldBindJSON(&input)
+
+	if err != nil {
+		responseError := helper.APIResponse("Delete Product Failed #DPT001", http.StatusUnprocessableEntity, "fail", err.Error())
+		c.JSON(http.StatusUnprocessableEntity, responseError)
+		return
+	}
+
+	err = h.product_service.DeleteProduct(input)
+
+	if err != nil {
+		responseError := helper.APIResponse("Delete Product Failed #DPT91", http.StatusBadRequest, "fail", nil)
+		c.JSON(http.StatusBadRequest, responseError)
+		return
+	}
+
+	response := helper.APIResponse("Product has been deleted", http.StatusOK, "success", true)
 	c.JSON(http.StatusOK, response)
 }

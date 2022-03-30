@@ -13,6 +13,7 @@ type (
 		Description string    `json:"description" bson:"description" binding:"required"`
 		Price       string    `json:"price" binding:"required"`
 		InStock     bool      `json:"in_stock" bson:"in_stock" binding:"required"`
+		Stock       int       `json:"stock" bson:"stock"`
 		CreatedAt   time.Time `json:"created_at" bson:"created_at"`
 		UpdatedAt   time.Time `json:"updated_at" bson:"updated_at"`
 	}

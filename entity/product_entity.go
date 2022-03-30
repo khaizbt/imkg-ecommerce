@@ -2,6 +2,7 @@ package entity
 
 type (
 	ProductInput struct {
+		ID          string `json:"product_id"`
 		UserID      int    `json:"user_id"`
 		Title       string `json:"title"`
 		CategoryID  int    `json:"category_id"`
@@ -10,6 +11,7 @@ type (
 		Price       string `json:"price"`
 		InStock     bool   `json:"in_stock" bson:"in_stock"`
 		BrandID     int    `json:"brand_id" bson:"brand_id"`
+		Stock       int    `json:"stock" bson:"stock"`
 	}
 
 	SearchInput struct {
