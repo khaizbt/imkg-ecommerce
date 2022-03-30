@@ -15,4 +15,7 @@ func TransactionRoute(route *gin.Engine, userService service.UserService) {
 
 	api := route.Group("/api/v1/transaction")
 	api.POST("add-cart", middleware.AuthMiddlewareUser(authService, userService, 1), transactionController.AddCart)
+	api.GET("list-cart", middleware.AuthMiddlewareUser(authService, userService, 1), transactionController.ListCart)
+	api.POST("update-cart", middleware.AuthMiddlewareUser(authService, userService, 1), transactionController.UpdateCart)
+	api.POST("delete-cart", middleware.AuthMiddlewareUser(authService, userService, 1), transactionController.DeleteCart)
 }

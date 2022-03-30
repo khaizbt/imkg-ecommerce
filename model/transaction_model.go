@@ -4,9 +4,8 @@ import "time"
 
 type (
 	Cart struct {
-		ID        string    `json:"id" bson:"id"`
-		ItemName  string    `json:"item_name" bson:"item_name"`
-		Seller    string    `json:"seller" bson:"seller"`
+		ID        string    `json:"id" bson:"_id"`
+		ProductID string    `json:"product_id" bson:"product_id"`
 		Qty       int       `json:"qty" bson:"qty"`
 		UserID    int       `json:"user_id" bson:"user_id"`
 		CreatedAt time.Time `json:"created_at" bson:"created_at"`
