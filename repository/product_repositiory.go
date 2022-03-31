@@ -18,6 +18,7 @@ type ElasticRepository interface {
 	UpdateProduct(productId string, post model.Product) error
 	GetDataByProductId(productId string) (model.Product, error)
 	DeleteProduct(productId string) error
+	UpdateStock(productId string, qty int) error
 }
 
 func (r *elasticRepo) InsertData(post model.Product) error {
@@ -162,6 +163,20 @@ func (r *elasticRepo) GetDataByProductId(productId string) (model.Product, error
 
 func (r *elasticRepo) DeleteProduct(productId string) error {
 	_, err := r.Client.Delete().Index(os.Getenv("ELASTIC_INDEX")).Type(os.Getenv("ELASTIC_TYPE")).Id(productId).Do(context.TODO())
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *elasticRepo) UpdateStock(productId string, qty int) error {
+	product := map[string]interface{}{
+		"stock": qty,
+	}
+
+	_, err := r.Client.Update().Index("products").Type("_doc").Id(productId).Doc(product).Do(context.TODO())
 
 	if err != nil {
 		return err

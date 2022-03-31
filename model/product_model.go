@@ -29,4 +29,14 @@ type (
 		Name string `json:"name"`
 		Slug string `json:"slug"`
 	}
+
+	Province struct {
+		IDProvince   int    `json:"id_province"`
+		ProvinceName string `json:"province_name"`
+	}
+
+	City struct {
+		IdCity   int    `json:"id_city"`
+		CityName string `json:"city_name"`
+	}
 )

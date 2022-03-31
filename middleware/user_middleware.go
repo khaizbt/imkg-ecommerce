@@ -48,15 +48,15 @@ func AuthMiddlewareUser(authService config.AuthService, service service.UserServ
 		userID := int(claim["user_id"].(float64))
 		user, err := service.GetUserById(userID)
 
-		if user.IdUserType != 1 && feature != 0 {
-			checkFeature, _ := service.CheckFeature(user.IdUserType, feature)
+		// if user.IdUserType != 1 && feature != 0 {
+		checkFeature, _ := service.CheckFeature(user.IdUserType, feature)
 
-			if checkFeature.ID == 0 {
-				response := helper.APIResponse("Unauthorized #TKN005", http.StatusForbidden, "error", "you don't have access to this feature")
-				context.AbortWithStatusJSON(http.StatusForbidden, response) //Agar proses dihentikan/tidak eksekusi program yang dibungkus middleware
-				return
-			}
+		if checkFeature.ID == 0 {
+			response := helper.APIResponse("Unauthorized #TKN005", http.StatusForbidden, "error", "you don't have access to this feature")
+			context.AbortWithStatusJSON(http.StatusForbidden, response) //Agar proses dihentikan/tidak eksekusi program yang dibungkus middleware
+			return
 		}
+		// }
 
 		if err != nil {
 			response := helper.APIResponse("Unauthorized #TKN004", http.StatusUnauthorized, "error", nil)
