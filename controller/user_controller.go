@@ -1,14 +1,14 @@
 package controller
 
 import (
-	"fmt"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/khaizbt/imkg-ecommerce/config"
 	"github.com/khaizbt/imkg-ecommerce/entity"
 	"github.com/khaizbt/imkg-ecommerce/helper"
 	"github.com/khaizbt/imkg-ecommerce/model"
 	"github.com/khaizbt/imkg-ecommerce/service"
-	"net/http"
 )
 
 type (
@@ -50,8 +50,6 @@ func (h *userController) Login(c *gin.Context) {
 	}
 
 	loginUser, err := h.userService.Login(input)
-
-	fmt.Println("Masuk")
 
 	if err != nil {
 		errorMessage := gin.H{"errors": err.Error()}

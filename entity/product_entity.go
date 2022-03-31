@@ -5,6 +5,7 @@ type (
 		ID          string `json:"product_id"`
 		UserID      int    `json:"user_id"`
 		Title       string `json:"title"`
+		Slug        string `json:"slug"`
 		CategoryID  int    `json:"category_id"`
 		SKU         string `json:"sku" bson:"sku"`
 		Description string `json:"description" bson:"description"`
@@ -21,7 +22,7 @@ type (
 		Title    string `json:"title"`
 	}
 	IdUserInput struct {
-		ID int `uri:"id" binding:"required"` //Ambil id dari URL
-
+		ID        int    `uri:"id"` //Ambil id dari URL
+		ProductId string `uri:"product_id"`
 	}
 )

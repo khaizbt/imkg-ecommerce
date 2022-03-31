@@ -2,7 +2,6 @@ package repository
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -71,7 +70,7 @@ func (r *mongoRepo) ListCart(userId int) ([]model.Cart, error) {
 		return results, err
 	}
 
-	fmt.Println(results)
+	
 
 	return results, nil
 }

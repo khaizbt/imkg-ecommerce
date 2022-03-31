@@ -2,7 +2,6 @@ package service
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"time"
 
@@ -72,7 +71,7 @@ func (s *transactionService) ListCart(userId int) ([]map[string]interface{}, err
 	if err != nil {
 		return nil, err
 	}
-	carts := []map[string]interface{}{}
+	var carts []map[string]interface{}
 
 	//Map Data Cart
 	for _, dataCart := range getDataCart {
@@ -107,15 +106,12 @@ func (s *transactionService) UpdateCart(input entity.CartInput, userId int) erro
 		return errors.New("Cart Not Found")
 	}
 
-	fmt.Println(cartData)
 	getDataProduct, err := s.product_service.GetDataByProductId(cartData.ProductID)
 
 	if err != nil {
 		log.Printf(err.Error())
 		return err
 	}
-
-	fmt.Println(getDataProduct)
 
 	if getDataProduct.Stock < input.Qty {
 		return errors.New("Stock Kosong!")
@@ -214,7 +210,7 @@ func (s *transactionService) Checkout(input entity.Checkout) error {
 	cartData.UpdatedAt = time.Now()
 
 	err = s.transaction_service.Checkout(cartData)
-	fmt.Println(input)
+
 	if err != nil {
 		log.Printf(err.Error())
 		return err
@@ -267,8 +263,6 @@ func (s *transactionService) ListSalesTransaction() ([]map[string]interface{}, e
 		getProvince, _ := s.user_service.GetProvinceById(transaction.Address.ProvinceId)
 
 		transaction.Address.ProvinceName = getProvince.ProvinceName
-
-		fmt.Println(getCity)
 
 		checkout = map[string]interface{}{
 			"_id":                transaction.ID,

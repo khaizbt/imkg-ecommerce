@@ -3,7 +3,6 @@ package repository
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"os"
 	"time"
 
@@ -22,18 +21,22 @@ type ElasticRepository interface {
 }
 
 func (r *elasticRepo) InsertData(post model.Product) error {
+	productId, _ := helper.GenerateNumber(6)
 	product := map[string]interface{}{
+		"id":          productId,
+		"slug":        post.Slug,
 		"title":       post.Title,
 		"sku":         post.SKU,
 		"description": post.Description,
 		"price":       post.Price,
 		"in_stock":    post.InStock,
-		"created_at":  time.Now(),
-		"updated_at":  time.Now(),
 		"user_id":     post.UserID,
 		"stock":       post.Stock,
+		"category_id": post.CategoryID,
+		"brand_id":    post.BrandID,
+		"created_at":  time.Now(),
+		"updated_at":  time.Now(),
 	}
-	productId, _ := helper.GenerateNumber(6)
 
 	_, err := r.Client.Index().Index("products").Type("_doc").Id(productId).BodyJson(product).Do(context.TODO())
 
@@ -49,13 +52,14 @@ func (r *elasticRepo) GetData(ctx context.Context, sku, title string, brand, cat
 
 	query := elastic.NewMatchAllQuery()
 	bq := elastic.NewBoolQuery().Must(query)
+	// bq := elastic.NewMatchQuery("sku", sku)
 
 	if title != "" {
+
 		bq.Must(elastic.NewMatchQuery("title", title))
 	}
 
 	if brand > 0 {
-		fmt.Println(brand)
 		bq.Must(elastic.NewMatchQuery("brand_id", brand))
 	}
 
@@ -100,10 +104,33 @@ func (r *repository) GetBrandIdByName(name string) (model.ProductBrand, error) {
 	return result, nil
 }
 
+func (r *repository) GetBrandById(brandId int) (model.ProductBrand, error) {
+	var result model.ProductBrand
+
+	err := r.db.Where("id = ?", brandId).First(&result).Error
+
+	if err != nil {
+		return result, err
+	}
+
+	return result, nil
+}
+
 func (r *repository) GetCategoryIdByName(name string) (model.ProductCategory, error) {
 	var result model.ProductCategory
 
 	err := r.db.Where("name = ?", name).First(&result).Error
+
+	if err != nil {
+		return result, err
+	}
+
+	return result, nil
+}
+func (r *repository) GetCategoryById(categoryId int) (model.ProductCategory, error) {
+	var result model.ProductCategory
+
+	err := r.db.Where("id = ?", categoryId).First(&result).Error
 
 	if err != nil {
 		return result, err
@@ -120,10 +147,9 @@ func (r *elasticRepo) UpdateProduct(productId string, post model.Product) error 
 		"price":       post.Price,
 		"in_stock":    post.InStock,
 		"updated_at":  time.Now(),
-		"user_id":     post.UserID,
 	}
 
-	_, err := r.Client.Update().Index("products").Type("_doc").Id(productId).Doc(product).Do(context.TODO())
+	_, err := r.Client.Update().Index(os.Getenv("ELASTIC_INDEX")).Type(os.Getenv("ELASTIC_TYPE")).Id(productId).Doc(product).Do(context.TODO())
 
 	if err != nil {
 		return err
@@ -137,7 +163,7 @@ func (r *elasticRepo) GetDataByProductId(productId string) (model.Product, error
 
 	query := elastic.NewMatchQuery("_id", productId)
 
-	search, err := r.Client.Search().Index("products").Type("_doc").Query(query).Do(context.TODO())
+	search, err := r.Client.Search().Index(os.Getenv("ELASTIC_INDEX")).Type(os.Getenv("ELASTIC_TYPE")).Query(query).Do(context.TODO())
 
 	if err != nil {
 		return result, err
@@ -156,6 +182,13 @@ func (r *elasticRepo) GetDataByProductId(productId string) (model.Product, error
 		result.UserID = data.UserID
 		result.InStock = data.InStock
 		result.Stock = data.Stock
+		result.BrandID = data.BrandID
+		result.CategoryID = data.CategoryID
+		result.Price = data.Price
+		result.SKU = data.SKU
+		result.Description = data.Description
+		result.Slug = data.Slug
+		result.CreatedAt = data.CreatedAt
 	}
 
 	return result, nil
@@ -176,7 +209,7 @@ func (r *elasticRepo) UpdateStock(productId string, qty int) error {
 		"stock": qty,
 	}
 
-	_, err := r.Client.Update().Index("products").Type("_doc").Id(productId).Doc(product).Do(context.TODO())
+	_, err := r.Client.Update().Index("ELASTIC_INDEX").Type(os.Getenv("ELASTIC_TYPE")).Id(productId).Doc(product).Do(context.TODO())
 
 	if err != nil {
 		return err

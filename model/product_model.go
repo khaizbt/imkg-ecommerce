@@ -4,10 +4,14 @@ import "time"
 
 type (
 	Product struct {
-		ID          string    `bson:"id" json:"id"`
-		UserID      int       `bson:"user_id" json:"user_id"`
-		Slug        string    `bson:"slug" json:"slug" binding:"required"`
-		CategoryId  int       `json:"category_id" bson:"category_id" binding:"required"`
+		ID           string `bson:"_id" json:"id"`
+		UserID       int    `bson:"user_id" json:"user_id"`
+		BrandName    string `json:"brand_name,omitempty"`
+		CategoryName string `json:"category_name,omitempty"`
+		BrandID      int    `json:"brand_id"`
+		CategoryID   int    `json:"category_id"`
+		Slug         string `bson:"slug" json:"slug" binding:"required"`
+		// CategoryId  int       `json:"category_id" bson:"category_id" binding:"required"`
 		Title       string    `json:"title" bson:"title" binding:"required"`
 		SKU         string    `json:"sku" bson:"sku" binding:"required"`
 		Description string    `json:"description" bson:"description" binding:"required"`

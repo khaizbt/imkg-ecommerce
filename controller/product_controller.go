@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -30,7 +29,7 @@ func (h *productController) CreateProduct(c *gin.Context) {
 		c.JSON(http.StatusUnprocessableEntity, responseError)
 		return
 	}
-	fmt.Println("Check 1")
+
 	input.UserID = c.MustGet("loggedUser").(model.User).ID
 	err = h.product_service.InsertProduct(input)
 
@@ -86,7 +85,7 @@ func (h *productController) UpdateProduct(c *gin.Context) {
 		return
 	}
 
-	input.UserID = c.MustGet("currentUser").(model.User).ID //TODO Buat Function Check Jika Prodduct Bukan Miliknya maka g bisa
+	input.UserID = c.MustGet("loggedUser").(model.User).ID
 	err = h.product_service.UpdateProduct(strconv.Itoa(inputID.ID), input)
 
 	if err != nil {
@@ -118,5 +117,27 @@ func (h *productController) DeleteProduct(c *gin.Context) {
 	}
 
 	response := helper.APIResponse("Product has been deleted", http.StatusOK, "success", true)
+	c.JSON(http.StatusOK, response)
+}
+
+func (h *productController) DetailProduct(c *gin.Context) {
+	inputID := entity.IdUserInput{}
+	err := c.ShouldBindUri(&inputID)
+
+	if err != nil {
+		responseError := helper.APIResponse("Get Detail Product Failed #UPD001", http.StatusUnprocessableEntity, "fail", err.Error())
+		c.JSON(http.StatusUnprocessableEntity, responseError)
+		return
+	}
+
+	productDetail, err := h.product_service.DetailProduct(inputID)
+
+	if err != nil {
+		responseError := helper.APIResponse("Get Product Detail Failed #DPU91", http.StatusBadRequest, "fail", err.Error())
+		c.JSON(http.StatusBadRequest, responseError)
+		return
+	}
+
+	response := helper.APIResponse("Get Product Success", http.StatusOK, "success", productDetail)
 	c.JSON(http.StatusOK, response)
 }

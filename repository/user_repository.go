@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"fmt"
-
 	"github.com/khaizbt/imkg-ecommerce/model"
 )
 
@@ -13,7 +11,9 @@ type UserRepository interface {
 
 	//Master
 	GetBrandIdByName(name string) (model.ProductBrand, error)
+	GetBrandById(brandId int) (model.ProductBrand, error)
 	GetCategoryIdByName(name string) (model.ProductCategory, error)
+	GetCategoryById(categoryId int) (model.ProductCategory, error)
 
 	GetProvinceList() ([]model.Province, error)
 	GetCityList() ([]model.City, error)
@@ -23,13 +23,13 @@ type UserRepository interface {
 
 func (r *repository) FindByEmail(email string) (model.User, error) {
 	var user model.User
-	fmt.Println("check12")
+
 	err := r.db.Where("email = ?", email).First(&user).Error
-	fmt.Println("check2")
+
 	if err != nil {
 		return user, err
 	}
-	fmt.Println("check3")
+
 	return user, nil
 }
 

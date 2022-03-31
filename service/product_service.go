@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	"fmt"
+	"errors"
 	"log"
 	"time"
 
@@ -20,9 +20,10 @@ type (
 
 	ProductService interface {
 		InsertProduct(input entity.ProductInput) error
-		GetProduct(inputSearchProduct entity.SearchInput) ([]model.Product, error)
+		GetProduct(inputSearchProduct entity.SearchInput) ([]map[string]interface{}, error)
 		UpdateProduct(productId string, input entity.ProductInput) error
 		DeleteProduct(input entity.ProductInput) error
+		DetailProduct(input entity.IdUserInput) (map[string]interface{}, error)
 	}
 )
 
@@ -37,10 +38,12 @@ func (s *productService) InsertProduct(input entity.ProductInput) error {
 		SKU:         input.SKU,
 		Stock:       input.Stock,
 		Price:       input.Price,
-		CategoryId:  input.CategoryID,
 		InStock:     input.InStock,
 		UserID:      input.UserID,
-		CreatedAt:   time.Time{},
+		BrandID:     input.BrandID,
+		CategoryID:  input.CategoryID,
+		// Slug:        input.Slug,
+		CreatedAt: time.Time{},
 	}
 
 	product.Slug = slug.Make(input.Title)
@@ -55,9 +58,7 @@ func (s *productService) InsertProduct(input entity.ProductInput) error {
 	return nil
 }
 
-func (s *productService) GetProduct(inputSearchProduct entity.SearchInput) ([]model.Product, error) {
-	fmt.Println(inputSearchProduct.Brand)
-
+func (s *productService) GetProduct(inputSearchProduct entity.SearchInput) ([]map[string]interface{}, error) {
 	var brand model.ProductBrand
 	var category model.ProductCategory
 	var err error
@@ -84,12 +85,37 @@ func (s *productService) GetProduct(inputSearchProduct entity.SearchInput) ([]mo
 
 	result, err := s.product_service.GetData(ctx, inputSearchProduct.SKU, inputSearchProduct.Title, brand.ID, category.ID)
 
+	var products []map[string]interface{}
 	if err != nil {
 		log.Printf(err.Error())
-		return result, err
+		return products, err
 	}
 
-	return result, nil
+	for _, dataProduct := range result {
+		var product map[string]interface{}
+
+		getDataBrand, _ := s.user_service.GetBrandById(dataProduct.BrandID)
+		dataProduct.BrandName = getDataBrand.Name
+
+		getDataCategory, _ := s.user_service.GetCategoryById(dataProduct.CategoryID)
+		dataProduct.CategoryName = getDataCategory.Name
+
+		product = map[string]interface{}{
+			"id":           dataProduct.ID,
+			"brand_name":   getDataBrand.Name,
+			"product_name": getDataCategory.Name,
+			"slug":         dataProduct.Slug,
+			"title":        dataProduct.Title,
+			"price":        dataProduct.Price,
+			"qty":          dataProduct.Stock,
+			"created_at":   dataProduct.CreatedAt,
+		}
+
+		products = append(products, product)
+
+	}
+
+	return products, nil
 
 }
 
@@ -99,7 +125,7 @@ func (s *productService) UpdateProduct(productId string, input entity.ProductInp
 		Description: input.Description,
 		SKU:         input.SKU,
 		Price:       input.Price,
-		CategoryId:  input.CategoryID,
+		CategoryID:  input.CategoryID,
 		InStock:     input.InStock,
 	}
 
@@ -121,4 +147,40 @@ func (s *productService) DeleteProduct(input entity.ProductInput) error {
 	}
 
 	return nil
+}
+
+func (s *productService) DetailProduct(input entity.IdUserInput) (map[string]interface{}, error) {
+
+	dataProduct, err := s.product_service.GetDataByProductId(input.ProductId)
+
+	if err != nil {
+		log.Println(err.Error())
+		return nil, err
+	}
+
+	if dataProduct.ID == "" {
+		return nil, errors.New("product not found")
+	}
+
+	getDataBrand, _ := s.user_service.GetBrandById(dataProduct.BrandID)
+	dataProduct.BrandName = getDataBrand.Name
+
+	getDataCategory, _ := s.user_service.GetCategoryById(dataProduct.CategoryID)
+	dataProduct.CategoryName = getDataCategory.Name
+
+	product := map[string]interface{}{
+		"id":            dataProduct.ID,
+		"brand_name":    getDataBrand.Name,
+		"category_name": getDataCategory.Name,
+		"product_name":  dataProduct.Title,
+		"description":   dataProduct.Description,
+		"sku":           dataProduct.SKU,
+		"slug":          dataProduct.Slug,
+		"title":         dataProduct.Title,
+		"price":         dataProduct.Price,
+		"qty":           dataProduct.Stock,
+		"created_at":    dataProduct.CreatedAt,
+	}
+
+	return product, err
 }
