@@ -73,3 +73,24 @@ func (h *userController) Login(c *gin.Context) {
 
 	c.JSON(http.StatusOK, response)
 }
+func (h *userController) CreateUser(c *gin.Context) {
+	var input entity.DataUserInput
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		responseError := helper.APIResponse("Create Account Failed #U001", http.StatusUnprocessableEntity, "fail", err.Error())
+		c.JSON(http.StatusUnprocessableEntity, responseError)
+		return
+	}
+
+	createUser, err := h.userService.CreateUser(input)
+
+	if err != nil {
+		responseError := helper.APIResponse("Create Account Failed #U002", http.StatusBadRequest, "fail", err.Error())
+		c.JSON(http.StatusBadRequest, responseError)
+		return
+	}
+
+	response := helper.APIResponse("Account has been registered", http.StatusOK, "success", createUser)
+	c.JSON(http.StatusOK, response)
+}

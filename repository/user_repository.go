@@ -8,6 +8,8 @@ type UserRepository interface {
 	FindByEmail(email string) (model.User, error)
 	FindById(userId int) (model.User, error)
 	UserFeature(feature model.UserTypeFeature) (model.UserTypeFeature, error)
+	CreateUser(user model.User) (model.User, error)
+	FindByUsername(Username string) (model.User, error)
 
 	//Master
 	GetBrandIdByName(name string) (model.ProductBrand, error)
@@ -53,4 +55,25 @@ func (r *repository) UserFeature(feature model.UserTypeFeature) (model.UserTypeF
 	}
 
 	return feature, nil
+}
+
+func (r *repository) CreateUser(user model.User) (model.User, error) {
+	err := r.db.Create(&user).Error
+
+	if err != nil {
+		return user, err
+	}
+	return user, nil
+}
+
+func (r *repository) FindByUsername(Username string) (model.User, error) {
+	var user model.User
+
+	err := r.db.Where("username = ?", Username).First(&user).Error
+
+	if err != nil {
+		return user, err
+	}
+
+	return user, nil
 }

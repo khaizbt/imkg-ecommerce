@@ -4,13 +4,14 @@ import "time"
 
 type (
 	User struct {
-		ID       int    `json:"id" bson:"id"`
-		Name     string `json:"name" bson:"name"`
-		Email    string `json:"email" bson:"email"`
-		Username string `json:"username" bson:"username"`
-		//Phone    string `json:"phone" bson:"phone"`
+		ID         int    `json:"id" bson:"id"`
+		Name       string `json:"name" bson:"name"`
+		Email      string `json:"email" bson:"email"`
+		Username   string `json:"username" bson:"username"`
+		Phone      string `json:"phone" bson:"phone"`
 		IdUserType int    `json:"id_user_type" bson:"id_user_type"`
 		Password   string `json:"password" bson:"password"`
+		Status     string `json:"status"`
 	}
 
 	UserType struct {

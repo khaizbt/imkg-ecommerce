@@ -1,6 +1,8 @@
 package service
 
 import (
+	"errors"
+
 	"github.com/khaizbt/imkg-ecommerce/entity"
 	"github.com/khaizbt/imkg-ecommerce/model"
 	"github.com/khaizbt/imkg-ecommerce/repository"
@@ -16,6 +18,7 @@ type (
 		Login(input entity.LoginInput) (model.User, error)
 		GetUserById(userId int) (model.User, error)
 		CheckFeature(idUserType int, idFeature int) (model.UserTypeFeature, error)
+		CreateUser(input entity.DataUserInput) (bool, error)
 	}
 )
 
@@ -65,4 +68,42 @@ func (s *service) CheckFeature(idUserType int, idFeature int) (model.UserTypeFea
 	}
 
 	return feature, nil
+}
+
+func (s *service) CreateUser(input entity.DataUserInput) (bool, error) {
+	cekUser, err := s.user_repository.FindByEmail(input.Email)
+
+	if cekUser.ID != 0 {
+		return false, errors.New("Email has been registered")
+	}
+
+	cekUsername, err := s.user_repository.FindByUsername(input.Username)
+
+	if cekUsername.ID != 0 {
+		return false, errors.New("Username has been taken")
+	}
+
+	user := model.User{
+		Name:       input.Name,
+		Email:      input.Email,
+		Username:   input.Username,
+		IdUserType: 2,
+		Status:     "Active",
+	}
+
+	password, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.MinCost)
+
+	if err != nil {
+		return false, err
+	}
+
+	user.Password = string(password)
+
+	_, err = s.user_repository.CreateUser(user)
+
+	if err != nil {
+		return false, err
+	}
+
+	return true, nil
 }
