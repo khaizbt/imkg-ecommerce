@@ -1,0 +1,2023 @@
+{
+	"info": {
+		"_postman_id": "34d564ef-6af9-45a5-93f7-29de97156060",
+		"name": "IMKG ECommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Khaiz Badaru Tammam\",\r\n    \"username\" : \"seller\",\r\n    \"email\" : \"khaiz@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/register",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Failed Email has been registered",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Khaiz Badaru Tammam\",\r\n    \"username\" : \"tammam\",\r\n    \"email\" : \"khaiz@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 01:44:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "112"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Create Account Failed #U002\",\n        \"code\": 400,\n        \"status\": \"fail\"\n    },\n    \"data\": \"Email has been registered\"\n}"
+						},
+						{
+							"name": "Register Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Khaiz Badaru Tammam\",\r\n    \"username\" : \"seller\",\r\n    \"email\" : \"khaiz@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/v1/register",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 01:45:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Account has been registered\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						},
+						{
+							"name": "If Uername Has been taken",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Khaiz Badaru Tammam\",\r\n    \"username\" : \"seller\",\r\n    \"email\" : \"khaiz@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/v1/register",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 01:46:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Create Account Failed #U002\",\n        \"code\": 400,\n        \"status\": \"fail\"\n    },\n    \"data\": \"Username has been taken\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"jwt_token\", jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"seller@example.com\",\r\n    \"password\" : \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/login",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "If Email noit found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"superadmin@example.com\",\r\n    \"password\" : \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 01:46:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Login Failed #LOG002\",\n        \"code\": 422,\n        \"status\": \"fail\"\n    },\n    \"data\": {\n        \"errors\": \"record not found\"\n    }\n}"
+						},
+						{
+							"name": "Wrong Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"seller@example.com\",\r\n    \"password\" : \"password12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/v1/login",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 01:46:53 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "158"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Login Failed #LOG002\",\n        \"code\": 422,\n        \"status\": \"fail\"\n    },\n    \"data\": {\n        \"errors\": \"crypto/bcrypt: hashedPassword is not the hash of the given password\"\n    }\n}"
+						},
+						{
+							"name": "Login Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"seller@example.com\",\r\n    \"password\" : \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/v1/login",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 01:46:41 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Login Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"seller@example.com\",\n        \"username\": \"seller\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxfQ.N1c2nJo8nCgnpvmf1dYSNq_0tqzl9gs_SBG_aDhVCkE\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/product/search?sku=YUA11881&brand=Gateron",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"search"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Gateron",
+									"disabled": true
+								},
+								{
+									"key": "sku",
+									"value": "YUA11881"
+								},
+								{
+									"key": "category",
+									"value": "Switch",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "Gateron"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/search",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"search"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "Gateron",
+											"disabled": true
+										},
+										{
+											"key": "sku",
+											"value": "YUA11881",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "Switch",
+											"disabled": true
+										},
+										{
+											"key": "brand",
+											"value": "Gateron",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 16:00:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1749"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Search Successes\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": [\n        {\n            \"brand_name\": \"Gateron\",\n            \"created_at\": \"2022-03-31T22:49:30.7513651+07:00\",\n            \"id\": \"013084\",\n            \"price\": \"4500\",\n            \"product_name\": \"Metcanical Keyboard\",\n            \"qty\": 150,\n            \"slug\": \"kailh-black-swicth\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"Gateron\",\n            \"created_at\": \"2022-03-31T22:34:35.723239+07:00\",\n            \"id\": \"399068\",\n            \"price\": \"4500\",\n            \"product_name\": \"Metcanical Keyboard\",\n            \"qty\": 150,\n            \"slug\": \"\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"Gateron\",\n            \"created_at\": \"2022-03-31T22:21:44.0305784+07:00\",\n            \"id\": \"\",\n            \"price\": \"4500\",\n            \"product_name\": \"Metcanical Keyboard\",\n            \"qty\": 150,\n            \"slug\": \"\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-31T21:54:51.664709+07:00\",\n            \"id\": \"\",\n            \"price\": \"4500\",\n            \"product_name\": \"\",\n            \"qty\": 150,\n            \"slug\": \"\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-30T19:45:17.9704983+07:00\",\n            \"id\": \"\",\n            \"price\": \"2500\",\n            \"product_name\": \"\",\n            \"qty\": 110,\n            \"slug\": \"\",\n            \"title\": \"Switch Gateron Yellow Milky \"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-30T19:42:19.7982878+07:00\",\n            \"id\": \"\",\n            \"price\": \"2500\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Switch Gateron Yellow Milky \"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-29T21:37:38.9335554+07:00\",\n            \"id\": \"\",\n            \"price\": \"81991\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Mechanical Keyboard\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-29T20:21:35.7903464+07:00\",\n            \"id\": \"\",\n            \"price\": \"81991\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Mechanical Keyboard\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"id\": \"\",\n            \"price\": \"250000\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Keycaps Matcha Japanese Route\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"id\": \"\",\n            \"price\": \"2500\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Gateron Blue\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Switch Gateron Yellow Milky \",\r\n    \"description\" : \"Ini Mechanical Keyboard\",\r\n    \"price\" : \"2500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"1311391\",\r\n    \"stock\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/product/create",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Products",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Kailh Black Swicth\",\r\n    \"description\" : \"Switch Clicky yang bisa memberikan sensasi mengetik yang nyaman\",\r\n    \"price\" : \"4500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"YUA11881\",\r\n    \"stock\": 150\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 14:54:51 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Product has been created\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Switch Gateron Yellow Milky (Clone)\",\r\n    \"description\" : \"Ini Mechanical Keyboard\",\r\n    \"price\" : \"2500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"1311391\",\r\n    \"stock\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/product/update/855540",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"update",
+								"855540"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Switch Gateron Yellow Milky (Clone)\",\r\n    \"description\" : \"Ini Mechanical Keyboard\",\r\n    \"price\" : \"2500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"1311391\",\r\n    \"stock\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/update/855540",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"update",
+										"855540"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 14:47:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Product has been updated\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\" : \"855540\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/product/delete",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_id\" : \"855540\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 14:53:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Product has been deleted\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Detail Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/product/detail/013084",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"detail",
+								"013084"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detail Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/detail/013084",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"detail",
+										"013084"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 16:31:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "420"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Get Product Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": {\n        \"brand_name\": \"Gateron\",\n        \"category_name\": \"Metcanical Keyboard\",\n        \"created_at\": \"2022-03-31T22:49:30.7513651+07:00\",\n        \"description\": \"Switch Clicky yang bisa memberikan sensasi mengetik yang nyaman\",\n        \"id\": \"013084\",\n        \"price\": \"4500\",\n        \"product_name\": \"Kailh Black Swicth\",\n        \"qty\": 150,\n        \"sku\": \"YUA11881\",\n        \"slug\": \"kailh-black-swicth\",\n        \"title\": \"Kailh Black Swicth\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products Copy",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/product/search?sku=YUA11881&brand=Gateron",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"search"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Gateron",
+									"disabled": true
+								},
+								{
+									"key": "sku",
+									"value": "YUA11881"
+								},
+								{
+									"key": "category",
+									"value": "Switch",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "Gateron"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/search",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"search"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "Gateron",
+											"disabled": true
+										},
+										{
+											"key": "sku",
+											"value": "YUA11881",
+											"disabled": true
+										},
+										{
+											"key": "category",
+											"value": "Switch",
+											"disabled": true
+										},
+										{
+											"key": "brand",
+											"value": "Gateron",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 16:00:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1749"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Search Successes\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": [\n        {\n            \"brand_name\": \"Gateron\",\n            \"created_at\": \"2022-03-31T22:49:30.7513651+07:00\",\n            \"id\": \"013084\",\n            \"price\": \"4500\",\n            \"product_name\": \"Metcanical Keyboard\",\n            \"qty\": 150,\n            \"slug\": \"kailh-black-swicth\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"Gateron\",\n            \"created_at\": \"2022-03-31T22:34:35.723239+07:00\",\n            \"id\": \"399068\",\n            \"price\": \"4500\",\n            \"product_name\": \"Metcanical Keyboard\",\n            \"qty\": 150,\n            \"slug\": \"\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"Gateron\",\n            \"created_at\": \"2022-03-31T22:21:44.0305784+07:00\",\n            \"id\": \"\",\n            \"price\": \"4500\",\n            \"product_name\": \"Metcanical Keyboard\",\n            \"qty\": 150,\n            \"slug\": \"\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-31T21:54:51.664709+07:00\",\n            \"id\": \"\",\n            \"price\": \"4500\",\n            \"product_name\": \"\",\n            \"qty\": 150,\n            \"slug\": \"\",\n            \"title\": \"Kailh Black Swicth\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-30T19:45:17.9704983+07:00\",\n            \"id\": \"\",\n            \"price\": \"2500\",\n            \"product_name\": \"\",\n            \"qty\": 110,\n            \"slug\": \"\",\n            \"title\": \"Switch Gateron Yellow Milky \"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-30T19:42:19.7982878+07:00\",\n            \"id\": \"\",\n            \"price\": \"2500\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Switch Gateron Yellow Milky \"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-29T21:37:38.9335554+07:00\",\n            \"id\": \"\",\n            \"price\": \"81991\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Mechanical Keyboard\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"2022-03-29T20:21:35.7903464+07:00\",\n            \"id\": \"\",\n            \"price\": \"81991\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Mechanical Keyboard\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"id\": \"\",\n            \"price\": \"250000\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Keycaps Matcha Japanese Route\"\n        },\n        {\n            \"brand_name\": \"\",\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"id\": \"\",\n            \"price\": \"2500\",\n            \"product_name\": \"\",\n            \"qty\": 0,\n            \"slug\": \"\",\n            \"title\": \"Gateron Blue\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Switch Gateron Yellow Milky \",\r\n    \"description\" : \"Ini Mechanical Keyboard\",\r\n    \"price\" : \"2500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"1311391\",\r\n    \"stock\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/product/create",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Products",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Kailh Black Swicth\",\r\n    \"description\" : \"Switch Clicky yang bisa memberikan sensasi mengetik yang nyaman\",\r\n    \"price\" : \"4500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"YUA11881\",\r\n    \"stock\": 150\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 14:54:51 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Product has been created\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Switch Gateron Yellow Milky (Clone)\",\r\n    \"description\" : \"Ini Mechanical Keyboard\",\r\n    \"price\" : \"2500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"1311391\",\r\n    \"stock\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/product/update/855540",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"update",
+								"855540"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Switch Gateron Yellow Milky (Clone)\",\r\n    \"description\" : \"Ini Mechanical Keyboard\",\r\n    \"price\" : \"2500\",\r\n    \"in_stock\" :true,\r\n    \"category_id\" : 1,\r\n    \"brand_id\" : 2,\r\n    \"sku\" : \"1311391\",\r\n    \"stock\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/update/855540",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"update",
+										"855540"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 14:47:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Product has been updated\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\" : \"855540\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/product/delete",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"product_id\" : \"855540\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 14:53:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Product has been deleted\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Detail Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/product/detail/013084",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"detail",
+								"013084"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detail Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/product/detail/013084",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"detail",
+										"013084"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 16:31:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "420"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Get Product Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": {\n        \"brand_name\": \"Gateron\",\n        \"category_name\": \"Metcanical Keyboard\",\n        \"created_at\": \"2022-03-31T22:49:30.7513651+07:00\",\n        \"description\": \"Switch Clicky yang bisa memberikan sensasi mengetik yang nyaman\",\n        \"id\": \"013084\",\n        \"price\": \"4500\",\n        \"product_name\": \"Kailh Black Swicth\",\n        \"qty\": 150,\n        \"sku\": \"YUA11881\",\n        \"slug\": \"kailh-black-swicth\",\n        \"title\": \"Kailh Black Swicth\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\":\"aaa3138\",\r\n    \"qty\" : 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/transaction/add-cart",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"add-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/transaction/list-cart",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"list-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_id\":\"095890\",\r\n    \"qty\" : 18\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/transaction/update-cart",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"update-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_id\":\"901444\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/transaction/delete-cart",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"delete-cart"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cart_id\":\"901444\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transaction/delete-cart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"delete-cart"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Mar 2022 13:44:58 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Delete Data Cart Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courier_id\" : 1,\r\n    \"payment_type\" : \"Cash\",\r\n    \"checkout_detail\" : [\r\n        {\r\n            \"cart_id\" : \"095890\"\r\n        }\r\n    ],\r\n    \"address\" : {\r\n        \"name\" : \"Jalan Bausasran No 66\",\r\n        \"kecamatan_id\" : 1,\r\n        \"city_id\" : 1,\r\n        \"zip_code\"  : 76519\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/transaction/checkout",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"checkout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Checkout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courier_id\" : 1,\r\n    \"payment_type\" : \"Cash\",\r\n    \"checkout_detail\" : [\r\n        {\r\n            \"cart_id\" : \"095890\"\r\n        }\r\n    ],\r\n    \"address\" : {\r\n        \"name\" : \"Jalan Bausasran No 66\",\r\n        \"kecamatan_id\" : 1,\r\n        \"city_id\" : 1,\r\n        \"zip_code\"  : 76519\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transaction/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"checkout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 12:47:37 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Checkout Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "List Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/transaction/list",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Transaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transaction/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 13:54:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1160"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Get List Transaction Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": [\n        {\n            \"id\": \"358926\",\n            \"user_id\": 1,\n            \"payment_type\": \"Cash\",\n            \"transaction_detail\": [\n                {\n                    \"product_id\": \"622284\",\n                    \"qty\": 18\n                }\n            ],\n            \"address\": {\n                \"name\": \"Jalan Bausasran No 66\",\n                \"address\": \"Jalan Pandeyan No 21B Pandeyan\",\n                \"province_id\": 11,\n                \"city_id\": 1,\n                \"zip_code\": 76519\n            },\n            \"courier\": {\n                \"courier_name\": \"\",\n                \"waybill\": \"\",\n                \"courier_type\": \"\"\n            },\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"updated_at\": \"0001-01-01T00:00:00Z\"\n        },\n        {\n            \"id\": \"038103\",\n            \"user_id\": 1,\n            \"payment_type\": \"Cash\",\n            \"transaction_detail\": [\n                {\n                    \"product_id\": \"622284\",\n                    \"qty\": 18\n                }\n            ],\n            \"address\": {\n                \"name\": \"Jalan Bausasran No 66\",\n                \"address\": \"\",\n                \"province_id\": 11,\n                \"city_id\": 1,\n                \"zip_code\": 76519\n            },\n            \"courier\": {\n                \"courier_name\": \"\",\n                \"waybill\": \"\",\n                \"courier_type\": \"\"\n            },\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"updated_at\": \"0001-01-01T00:00:00Z\"\n        },\n        {\n            \"id\": \"385693\",\n            \"user_id\": 1,\n            \"payment_type\": \"Cash\",\n            \"transaction_detail\": [\n                {\n                    \"product_id\": \"622284\",\n                    \"qty\": 18\n                }\n            ],\n            \"address\": {\n                \"name\": \"Jalan Bausasran No 66\",\n                \"address\": \"\",\n                \"province_id\": 11,\n                \"city_id\": 1101,\n                \"zip_code\": 76519\n            },\n            \"courier\": {\n                \"courier_name\": \"JNE\",\n                \"waybill\": \"98317371\",\n                \"courier_type\": \"REG\"\n            },\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"updated_at\": \"0001-01-01T00:00:00Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List Sales Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/transaction/list-all",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"list-all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Sales Transaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transaction/list-all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"list-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 13:49:12 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1316"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Get List Sales Transaction Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": [\n        {\n            \"_id\": \"358926\",\n            \"address\": {\n                \"name\": \"Jalan Bausasran No 66\",\n                \"address\": \"Jalan Pandeyan No 21B Pandeyan\",\n                \"province_id\": 11,\n                \"city_id\": 1,\n                \"province_name\": \"Nanggroe Aceh Darussalam (NAD)\",\n                \"zip_code\": 76519\n            },\n            \"courier\": null,\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"status\": \"Dibayar\",\n            \"transaction_detail\": [\n                {\n                    \"product_id\": \"622284\",\n                    \"qty\": 18,\n                    \"product_name\": \"Switch Gateron Yellow Milky \"\n                }\n            ],\n            \"updated_at\": \"0001-01-01T00:00:00Z\",\n            \"user_id\": 1\n        },\n        {\n            \"_id\": \"038103\",\n            \"address\": {\n                \"name\": \"Jalan Bausasran No 66\",\n                \"address\": \"\",\n                \"province_id\": 11,\n                \"city_id\": 1,\n                \"province_name\": \"Nanggroe Aceh Darussalam (NAD)\",\n                \"zip_code\": 76519\n            },\n            \"courier\": null,\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"status\": \"Dibayar\",\n            \"transaction_detail\": [\n                {\n                    \"product_id\": \"622284\",\n                    \"qty\": 18,\n                    \"product_name\": \"Switch Gateron Yellow Milky \"\n                }\n            ],\n            \"updated_at\": \"0001-01-01T00:00:00Z\",\n            \"user_id\": 1\n        },\n        {\n            \"_id\": \"385693\",\n            \"address\": {\n                \"name\": \"Jalan Bausasran No 66\",\n                \"address\": \"\",\n                \"province_id\": 11,\n                \"city_id\": 1101,\n                \"city_name\": \"Simeulue\",\n                \"province_name\": \"Nanggroe Aceh Darussalam (NAD)\",\n                \"zip_code\": 76519\n            },\n            \"courier\": null,\n            \"created_at\": \"0001-01-01T00:00:00Z\",\n            \"status\": \"Dibayar\",\n            \"transaction_detail\": [\n                {\n                    \"product_id\": \"622284\",\n                    \"qty\": 18,\n                    \"product_name\": \"Switch Gateron Yellow Milky \"\n                }\n            ],\n            \"updated_at\": \"0001-01-01T00:00:00Z\",\n            \"user_id\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction_id\" : \"038103\",\r\n    \"status\" : \"Dikirim\",\r\n    \"courier\" : {\r\n        \"courier_name\" : \"JNE\",\r\n        \"waybill\" : \"98317371\", \r\n        \"courier_type\" : \"REG\"\r\n    } \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/transaction/update-status",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"transaction",
+								"update-status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Status Dikirim",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transaction_id\" : \"385693\",\r\n    \"status\" : \"Dikirim\",\r\n    \"courier\" : {\r\n        \"courier_name\" : \"JNE\",\r\n        \"waybill\" : \"98317371\", \r\n        \"courier_type\" : \"REG\"\r\n    } \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transaction/update-status",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transaction",
+										"update-status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 12:55:55 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Checkout Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						},
+						{
+							"name": "Update Status Dibatalkan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transaction_id\" : \"385693\",\r\n    \"status\" : \"Dibatalkan\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/v1/transaction/update-status",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"transaction",
+										"update-status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 13:55:47 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Update Status Success\",\n        \"code\": 200,\n        \"status\": \"success\"\n    },\n    \"data\": true\n}"
+						},
+						{
+							"name": "Update Status Dikirim Tanpa Data Kurir",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transaction_id\" : \"385693\",\r\n    \"status\" : \"Dikirim\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}api/v1/transaction/update-status",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"v1",
+										"transaction",
+										"update-status"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Mar 2022 13:57:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"message\": \"Update Status Failed #CTO002\",\n        \"code\": 422,\n        \"status\": \"fail\"\n    },\n    \"data\": \"Status Dikirim Wajib Melampirkan Data Pengiriman\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
