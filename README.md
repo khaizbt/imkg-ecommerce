@@ -22,10 +22,10 @@ To Run this Repo, you need to install [Go](https://golang.org/dl/) and Have a Do
 1. Clone this repo using https
 
 ```bash
-git clone https://github.com/khaizbt/imkg-ecommerce warung-pintar-test
+git clone https://github.com/khaizbt/imkg-ecommerce
 ```
 
-2. in your bash, run `cd warung-pintar-test`
+2. in your bash, run `cd imkg-ecommerce`
 3. if everything is configured, run
 
 ```bash
