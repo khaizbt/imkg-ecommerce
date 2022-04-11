@@ -1,6 +1,6 @@
-# Warung Pintar Pre Test Backend Engineer
+# Golang Clean Arch Example
 
-Here are the results of the Warung Pintar Backend Engineer pre test project
+Here are the results example for Golang Clean Architecture project
 
 ## Overview
 
@@ -75,4 +75,4 @@ Due to time constraints, I haven't had time to create Unit Tests yet, but I will
 
 ## Thanks
 
-Thank you Warung Pintar team, sorry for the shortcomings in this project, I am waiting for good news from the Warung Pintar team ;)
+Thank you, sorry for the shortcomings in this project, If you have feedback or improvement in this project, Just PR! :)
