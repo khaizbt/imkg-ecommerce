@@ -2,8 +2,10 @@ package service
 
 import (
 	"errors"
+	"runtime"
 
 	"github.com/khaizbt/imkg-ecommerce/entity"
+	"github.com/khaizbt/imkg-ecommerce/helper"
 	"github.com/khaizbt/imkg-ecommerce/model"
 	"github.com/khaizbt/imkg-ecommerce/repository"
 	"golang.org/x/crypto/bcrypt"
@@ -19,6 +21,11 @@ type (
 		GetUserById(userId int) (model.User, error)
 		CheckFeature(idUserType int, idFeature int) (model.UserTypeFeature, error)
 		CreateUser(input entity.DataUserInput) (bool, error)
+	}
+
+	BodyEmail struct {
+		Name string
+		Body string
 	}
 )
 
@@ -71,16 +78,16 @@ func (s *service) CheckFeature(idUserType int, idFeature int) (model.UserTypeFea
 }
 
 func (s *service) CreateUser(input entity.DataUserInput) (bool, error) {
-	cekUser, err := s.user_repository.FindByEmail(input.Email)
+	cekUser, _ := s.user_repository.FindByEmail(input.Email)
 
 	if cekUser.ID != 0 {
-		return false, errors.New("Email has been registered")
+		return false, errors.New("email has been registered")
 	}
 
-	cekUsername, err := s.user_repository.FindByUsername(input.Username)
+	cekUsername, _ := s.user_repository.FindByUsername(input.Username)
 
 	if cekUsername.ID != 0 {
-		return false, errors.New("Username has been taken")
+		return false, errors.New("username has been taken")
 	}
 
 	user := model.User{
@@ -104,6 +111,15 @@ func (s *service) CreateUser(input entity.DataUserInput) (bool, error) {
 	if err != nil {
 		return false, err
 	}
+
+	bodyEmail := BodyEmail{
+		input.Name,
+		"Terima Kasih sudah Registrasi di IMKG, Semoga betah",
+	}
+	runtime.GOMAXPROCS(2)
+
+	//Send Email
+	go helper.SendEmail(input.Email, "Registration Success", "html/email_verification.html", bodyEmail)
 
 	return true, nil
 }

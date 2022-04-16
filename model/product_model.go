@@ -20,6 +20,7 @@ type (
 		Stock       int       `json:"stock" bson:"stock"`
 		CreatedAt   time.Time `json:"created_at" bson:"created_at"`
 		UpdatedAt   time.Time `json:"updated_at" bson:"updated_at"`
+		Image       []Image   `json:"image"`
 	}
 
 	ProductBrand struct {
@@ -42,5 +43,10 @@ type (
 	City struct {
 		IdCity   int    `json:"id_city"`
 		CityName string `json:"city_name"`
+	}
+
+	Image struct {
+		FileName  string `json:"file_name" bson:"file_name"`
+		IsPrimary bool   `json:"is_primary" bson:"is_primary"`
 	}
 )

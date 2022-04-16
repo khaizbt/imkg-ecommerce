@@ -65,7 +65,7 @@ func (s *transactionService) AddToCart(input entity.CartInput) error {
 	return nil
 }
 
-func (s *transactionService) ListCart(userId int) ([]map[string]interface{}, error) {
+func (s *transactionService) ListCart(userId int) ([]map[string]any, error) {
 	getDataCart, err := s.transaction_service.ListCart(userId)
 
 	if err != nil {

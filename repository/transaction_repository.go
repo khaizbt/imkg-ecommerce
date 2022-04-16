@@ -70,8 +70,6 @@ func (r *mongoRepo) ListCart(userId int) ([]model.Cart, error) {
 		return results, err
 	}
 
-	
-
 	return results, nil
 }
 
