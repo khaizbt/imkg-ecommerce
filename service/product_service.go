@@ -42,6 +42,7 @@ func (s *productService) InsertProduct(input entity.ProductInput) error {
 		UserID:      input.UserID,
 		BrandID:     input.BrandID,
 		CategoryID:  input.CategoryID,
+		Image:       input.Image,
 		// Slug:        input.Slug,
 		CreatedAt: time.Time{},
 	}
@@ -108,6 +109,7 @@ func (s *productService) GetProduct(inputSearchProduct entity.SearchInput) ([]ma
 			"title":        dataProduct.Title,
 			"price":        dataProduct.Price,
 			"qty":          dataProduct.Stock,
+			"image":        dataProduct.Image,
 			"created_at":   dataProduct.CreatedAt,
 		}
 
@@ -179,6 +181,7 @@ func (s *productService) DetailProduct(input entity.IdUserInput) (map[string]int
 		"title":         dataProduct.Title,
 		"price":         dataProduct.Price,
 		"qty":           dataProduct.Stock,
+		"image":         dataProduct.Image,
 		"created_at":    dataProduct.CreatedAt,
 	}
 

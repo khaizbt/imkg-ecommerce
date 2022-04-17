@@ -15,4 +15,5 @@ func RouteUser(route *gin.Engine, service service.UserService) {
 	api := route.Group("/api/v1")
 	api.POST("/login", userController.Login)
 	api.POST("/register", userController.CreateUser)
+	api.POST("/upload-file", userController.UploadFile)
 }

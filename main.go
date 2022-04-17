@@ -18,6 +18,7 @@ func main() {
 	route.RouteUser(router, userService)
 	route.ProductRoute(router, userService)
 	route.TransactionRoute(router, userService)
+	// helper.SendEmail("khaizdotid@gmail.com", "Halo Guys", "Masuk Brosis")
 	_ = router.Run(":8000")
 
 }

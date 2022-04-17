@@ -26,14 +26,20 @@ services:
     ports:
       # <Port exposed> : < MySQL Port running inside container>
       - '3306:3306'
+    volumes: 
+      - D:\Tutorial\Docker\data:/var/lib/mysql
   mongo:
     container_name: mongo
     image: mongo:5.0.6-focal
     restart : always
     ports : 
     - "27018:27017"
+    volumes: 
+      - D:\Tutorial\Docker\data:/data/db
   elastic:
     container_name: elastic
     image: elasticsearch:6.8.21
     ports :
       - "9500:9200"
+    volumes: 
+      - D:\Tutorial\Docker\data:/data/db_elastic

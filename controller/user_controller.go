@@ -94,3 +94,24 @@ func (h *userController) CreateUser(c *gin.Context) {
 	response := helper.APIResponse("Account has been registered", http.StatusOK, "success", createUser)
 	c.JSON(http.StatusOK, response)
 }
+
+func (h *userController) UploadFile(c *gin.Context) {
+	alias := c.Request.FormValue("filename") //Jika diisi maka akan menjadi nama file
+	uploadedFile, handler, err := c.Request.FormFile("files")
+
+	if err != nil {
+		responseError := helper.APIResponse("Upload File Failed #UP01", http.StatusInternalServerError, "fail", err.Error())
+		c.JSON(http.StatusInternalServerError, responseError)
+		return
+	}
+	file, err := helper.UploadFile(alias, "products", "image", uploadedFile, handler)
+
+	if err != nil {
+		responseError := helper.APIResponse("Upload File Failed #UP029", http.StatusInternalServerError, "fail", err.Error())
+		c.JSON(http.StatusInternalServerError, responseError)
+		return
+	}
+
+	response := helper.APIResponse("Upload File Success", http.StatusOK, "success", file)
+	c.JSON(http.StatusOK, response)
+}

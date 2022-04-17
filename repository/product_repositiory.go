@@ -34,6 +34,7 @@ func (r *elasticRepo) InsertData(post model.Product) error {
 		"stock":       post.Stock,
 		"category_id": post.CategoryID,
 		"brand_id":    post.BrandID,
+		"image":       post.Image,
 		"created_at":  time.Now(),
 		"updated_at":  time.Now(),
 	}
@@ -93,7 +94,7 @@ func (r *elasticRepo) GetData(ctx context.Context, sku, title string, brand, cat
 }
 
 func (r *repository) GetBrandIdByName(name string) (model.ProductBrand, error) {
-	var result model.ProductBrand
+	var result model.ProductBrand //Data Kosong
 
 	err := r.db.Where("name = ?", name).First(&result).Error
 
@@ -189,6 +190,7 @@ func (r *elasticRepo) GetDataByProductId(productId string) (model.Product, error
 		result.Description = data.Description
 		result.Slug = data.Slug
 		result.CreatedAt = data.CreatedAt
+		result.Image = data.Image
 	}
 
 	return result, nil
